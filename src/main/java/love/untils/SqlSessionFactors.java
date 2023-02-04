@@ -27,9 +27,9 @@ public class SqlSessionFactors {
     private static DataSource dataSource() {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriverClass(com.mysql.jdbc.Driver.class);
-        dataSource.setUrl("jdbc:mysql://119.23.49.102:3306/016-order?serverTimezone=UTC");
-        dataSource.setUsername("root");
-        dataSource.setPassword("MySql@016016");
+        dataSource.setUrl("jdbc:mysql://#/016-order?serverTimezone=UTC");
+        dataSource.setUsername("#");
+        dataSource.setPassword("#");
         return dataSource;
     }
 

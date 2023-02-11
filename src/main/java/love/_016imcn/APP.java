@@ -1,20 +1,24 @@
 package love._016imcn;
 
-import love.thread.AddThread;
-import love.thread.CycleThread;
-import love.thread.DeleteThread;
-import love.thread.SelectThread;
+import love.thread.*;
+import love.untils.SqlSessionFactors;
 
 public class APP {
-    public static Integer id;
+    public static volatile Integer id;
     public static void main(String[] args) {
+        SqlSessionFactors.init();
         Thread addThread = new AddThread();
-        addThread.start();
         try {
             addThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        addThread.start();
+        while (id == null) {
+            Thread.onSpinWait();
+        }
+        System.out.println("\n\n\n" +id+ "\n\n\n\n\n\n");
+
         Thread selectThread = new SelectThread(id);
         selectThread.start();
         Thread cycleThread = new CycleThread(id);

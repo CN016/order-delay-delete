@@ -5,7 +5,7 @@ import love.model.Table;
 import love.untils.GetMapper;
 
 public class DeleteThread extends Thread{
-    private Integer id;
+    private final Integer id;
     public DeleteThread(Integer id){
         this.id = id;
     }
